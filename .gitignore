@@ -1,0 +1,171 @@
+# ============================================
+# 1. 操作系统及编辑器通用文件
+# ============================================
+# Windows 系统
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS 系统
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux 系统
+.directory
+
+# 通用编辑器备份文件
+*~
+*.swp
+*.swo
+*.bak
+*.backup
+
+# ============================================
+# 2. 硬件设计 (KiCad / 立创EDA / 通用PCB)
+# ============================================
+# KiCad 临时文件
+*.000
+*.bak
+*.bck
+*-backups/
+*.kicad_pcb-bak
+*.sch-bak
+*~
+_autosave-*
+fp-info-cache
+
+# KiCad 导出文件
+*.net  
+*.dsn  
+*.ses  
+*.xml  
+# Gerber 文件输出目录
+/gerber/
+/out/
+
+# 立创EDA 本地备份与临时文件
+backup/
+history/
+*.html
+
+# 通用PCB设计临时文件
+*.backup~
+*.lock
+*.tmp
+
+# ============================================
+# 3. 固件开发 (Keil MDK-ARM / IAR / MounRiver / 通用)
+# ============================================
+# --- Keil MDK 
+*.uvoptx    
+*.uvguix.*  
+*.scvd      
+
+*.o    
+*.d    
+*.crf  
+*.htm  
+*.dep  
+*.map  
+*.bak  
+*.lnp  
+*.lst  
+*.iex  
+*.sct  
+*.dbg*
+*.axf  
+*.hex  
+*.bin  
+
+# Keil 输出目录
+/RTE/
+/Listings/
+/Objects/
+
+# --- IAR Embedded Workbench
+EWARM/**/Obj/
+EWARM/**/List/
+EWARM/**/Exe/
+*.dep
+*.ewt
+EWARM/settings/
+
+# --- MounRiver (CH573 等RISC-V芯片)
+obj/
+*.dep
+*.elf
+*.hex
+
+# --- 其他通用嵌入式文件
+*.mxproject
+JLinkLog.txt
+JLinkSettings.ini
+
+# ============================================
+# 4. Android 开发
+# ============================================
+# Android Studio 及 Gradle
+*.iml
+.gradle/
+/local.properties
+/.idea/workspace.xml
+/.idea/tasks.xml
+/.idea/gradle.xml
+/.idea/libraries
+.DS_Store
+/build/
+/captures/
+.externalNativeBuild
+
+# ============================================
+# 5. Python 开发 (数据分析/AI模型训练)
+# ============================================
+# Python 字节码及缓存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虚拟环境及包管理
+.venv/
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 数据分析及模型文件 
+*.ipynb_checkpoints/
+.pytest_cache/
+.coverage
+htmlcov/
+# 模型文件
+*.h5
+*.pkl
+*.joblib
+*.pt
+*.pth
+
+# ============================================
+# 6. 其他通用规则
+# ============================================
+# 日志文件
+*.log
+
+# 压缩包
+*.zip
+*.7z
+*.rar
+*.tar.gz
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 密钥和敏感信息 
+*.key
+*.pem
+.env
+secrets/
