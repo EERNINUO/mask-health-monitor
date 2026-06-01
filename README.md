@@ -45,7 +45,7 @@
 ## 🏗️ 系统架构
 ![硬件设计图](docs/pic/硬件设计.png)
 ![单片机软件](docs/pic/单片机软件.png)
-![Android软件](docs/pic/Android软件.png)
+![Android软件](docs/pic/Andriod软件.png)
 > *本项目的核心在于传感器阵列数据、BLE 通信和 AI 模型的完整闭环。*
 >*注：当前稳定链路为 STM32L + CH9141；CH573 单芯片方案可降低 BOM 成本，但 BLE 协议栈集成仍在进行中。*
 
@@ -58,23 +58,46 @@
 ## 📁 项目结构
 mask-type-health-monitoring-system/
 ├── README.md               
-├── LICENSE                 # GPL-3.0
-├── docs/                   # 详细文档
+├── LICENSE  # GPL-3.0
+├── docs/ # 详细文档
+│   └──  LICENSE # CC BY-SA 4.0  
 ├── firmware/ 
 │   ├── stm32l_project_v2.0/ # STM32L + CH9141 方案固件
 │   └── ch573_project_v1.0/ # CH573 单芯片方案固件
-├── hardware/               # 硬件设计文件
-├── android/                # Android 应用源码
-├── training/               # 模型训练代码
-└── mechanical/             # 机械结构（如果有）
+├── hardware/  # 硬件设计文件
+│   ├── stm32l_project/ # STM32L + CH9141 方案 PCB
+│   ├── ch573_project/ # CH573 单芯片方案 PCB
+│   └── LICENSE # CERN-OHL-S-2.0   
+├── android/  # Android 应用源码
+├── training/  # 模型训练代码
+└── mechanical/  # 机械结构
 
+## ⚠️ 已知问题与兼容性说明
+
+### 1. 部分鸿蒙（HarmonyOS 3.0）设备兼容性问题
+- **问题现象**：应用在Android 14（API 34）设备上功能正常，但在部分升级至HarmonyOS 3.0的设备上，无法扫描和连接BLE设备。系统自带的蓝牙设置页面能正常发现设备，但应用与官方调试助手均无法正常工作。
+
+- **问题原因**：初步定位为鸿蒙系统的权限管理差异导致。部分Android应用所使用的旧版BLE API在鸿蒙3.0下运行，可能被要求申请一个不对第三方应用开放的 ohos.permission.MANAGE_BLUETOOTH 系统级权限，从而导致应用卡在权限申请阶段。
+
+- **长期方案**：计划在新版本中增加针对鸿蒙系统的权限检测逻辑，在连接BLE设备前主动引导用户完成以上设置。
+  
+> 如果开发者朋友有意向接手或测试该功能，欢迎提交PR。
+
+### 2. 没有合适的气体传感器
+- **问题现象**：目前项目中尝试使用过`SGP-30`和 `SGP-40`传感器，但均无法满足项目需求。
+- **问题原因**：
+  - **SGP-30**工作电流约为 50mA，耗电量大的同时发热量也过大，会影响温度传感器数值；
+  - `SGP-40`传感器虽然功耗发热量较小，但输出值为空气质量系数，且需要搭载官方的算法库。
+  - 二者都需要一定的启动时间，无法满足实时监测的需求。
+- **解决方案**：
+  - **临时解决方案**：暂时舍弃气体传感器，只使用温湿度传感器和压力传感器。
+  - **长期解决方案**：寻找更加合适的气体传感器，以替代现有的传感器阵列。
 
 ## 🚀 快速开始
 
 ### 1. 硬件搭建（验证过的 STM32L 方案）
 - 从 `hardware/stm32l_ch9141/` 获取原理图和 PCB 文件（立创 EDA 格式）。
 - 打样并焊接。**注意**：传感器阵列需按 BOM 清单选用对应型号。
-- 烧录固件：见 `firmware/stm32l/` 中的 `README`。
 
 ### 2. 固件编译与烧录
 - 使用 Keil MDK 将固件编译并烧录到 STM32L 单片机上。
@@ -83,8 +106,26 @@ mask-type-health-monitoring-system/
 - 使用 Android Studio 打开 android/ 项目，编译下载。
 
 ### 4. 运行呼吸识别模型（离线）
-<font color="red">待补充</font>
-训练数据请自行采集或使用公开呼吸数据集（如果有的话）。
+1. 环境配置说明
+  需要注意的是，机器学习开发环境的配置涉及 TensorFlow、CUDA 和 cuDNN 三者之间严格的版本对应关系，不恰当的版本组合可能导致GPU无法被识别。
+  本项目的模型训练环境配置如下：
+  - 操作系统: Ubuntu 24.04 (通过 WSL2 运行)
+  - Python 版本: 3.12
+  - TensorFlow 版本: 2.14
+  - CUDA 版本: 11.8
+  - cuDNN 版本: 8.6
+
+2. 数据集
+- 请将数据集按照分类放置到`health_data_folder`和`ill_data_folder`文件夹中。
+- 目前只接受 `.db` 格式的数据集，请确保数据集格式正确。
+- 训练数据请自行采集或使用公开呼吸数据集（如果有的话）。
+
+3. 运行训练代码
+环境配置完成后，你可以使用以下命令在 WSL 终端内开始训练：
+```bash
+cd training
+python train.py                   # 执行训练脚本
+```
 
 ## 🗺️ 路线图（未来计划）
 - 短期：完成 CH573 固件中 BLE 数据收发与应用逻辑的集成。
@@ -116,7 +157,7 @@ mask-type-health-monitoring-system/
 ## 📧 联系方式
 - 项目维护：@EERNINUO
 - 如有技术问题，欢迎通过 GitHub Issues 交流。
-- 最后更新：2026-05-31
+- 最后更新：2026-06-01
 - 维护状态：🟡 低活跃度维护（主要精力转至 ArbWave30，但欢迎 PR）
 ---
 
