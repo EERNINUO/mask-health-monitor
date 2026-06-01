@@ -62,7 +62,7 @@
 ## 📁 项目结构
 mask-type-health-monitoring-system/  
 ├── README.md                 
-├── LICENSE  # GPL-3.0  
+├── LICENSE  # MIT
 ├── docs/ # 详细文档  
 │   └──  LICENSE # CC BY-SA 4.0    
 ├── firmware/   
