@@ -24,6 +24,10 @@
 </div>
 
 ## 🎯 项目概述
+本项目是一个口罩集成式呼吸监测系统的**早期原型与实验平台**，通过微传感器阵列采集呼吸气流、温湿度等信号，利用 BLE 无线传输至 Android 设备，并结合轻量化神经网络进行呼吸模式识别（如正常、急促、咳嗽等）。
+> 本项目是我较为早期的项目，由于当时缺乏工程训练，代码质量相对较低，请见谅。
+
+## 📌 项目状态速览
 
 | 模块 | 状态 | 说明 |
 |------|------|------|
@@ -56,21 +60,21 @@
 3.  **技术挑战**：在方案二推进期间，Android 新版 API 更新了权限模型，虽然在新版本 Android 上能进行兼容，但是在某些非原生 Android 权限模型可能与原生 Android 不同，导致旧有 Android 代码需要重构 BLE 驱动部分，目前该项目暂处于维护休眠期。
 
 ## 📁 项目结构
-mask-type-health-monitoring-system/
-├── README.md               
-├── LICENSE  # GPL-3.0
-├── docs/ # 详细文档
-│   └──  LICENSE # CC BY-SA 4.0  
-├── firmware/ 
-│   ├── stm32l_project_v2.0/ # STM32L + CH9141 方案固件
-│   └── ch573_project_v1.0/ # CH573 单芯片方案固件
-├── hardware/  # 硬件设计文件
-│   ├── stm32l_project/ # STM32L + CH9141 方案 PCB
-│   ├── ch573_project/ # CH573 单芯片方案 PCB
-│   └── LICENSE # CERN-OHL-S-2.0   
-├── android/  # Android 应用源码
-├── training/  # 模型训练代码
-└── mechanical/  # 机械结构
+mask-type-health-monitoring-system/  
+├── README.md                 
+├── LICENSE  # GPL-3.0  
+├── docs/ # 详细文档  
+│   └──  LICENSE # CC BY-SA 4.0    
+├── firmware/   
+│   ├── stm32l_project_v2.0/ # STM32L + CH9141 方案固件  
+│   └── ch573_project_v1.0/ # CH573 单芯片方案固件  
+├── hardware/  # 硬件设计文件  
+│   ├── stm32l_project/ # STM32L + CH9141 方案 PCB  
+│   ├── ch573_project/ # CH573 单芯片方案 PCB  
+│   └── LICENSE # CERN-OHL-S-2.0     
+├── android/  # Android 应用源码  
+├── training/  # 模型训练代码  
+└── mechanical/  # 机械结构  
 
 ## ⚠️ 已知问题与兼容性说明
 
