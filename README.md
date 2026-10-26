@@ -60,6 +60,7 @@
 3.  **技术挑战**：在方案二推进期间，Android 新版 API 更新了权限模型，虽然在新版本 Android 上能进行兼容，但是在某些非原生 Android 权限模型可能与原生 Android 不同，导致旧有 Android 代码需要重构 BLE 驱动部分，目前该项目暂处于维护休眠期。
 
 ## 📁 项目结构
+```text
 mask-type-health-monitoring-system/  
 ├── README.md                 
 ├── LICENSE  # MIT
@@ -74,7 +75,8 @@ mask-type-health-monitoring-system/
 │   └── LICENSE # CERN-OHL-S-2.0     
 ├── android/  # Android 应用源码  
 ├── training/  # 模型训练代码  
-└── mechanical/  # 机械结构  
+└── mechanical/  # 机械结构
+```
 
 ## ⚠️ 已知问题与兼容性说明
 
@@ -164,6 +166,3 @@ python train.py                   # 执行训练脚本
 - 最后更新：2026-06-01
 - 维护状态：🟡 低活跃度维护（主要精力转至 ArbWave30，但欢迎 PR）
 ---
-
-## 写在最后
-这个项目不会因为中途换芯片或 Android API 升级而“烂尾”——它只是暂停在了某个技术节点。如果你觉得它有点意思，哪怕只是点个 star，也是对我继续填坑的最大鼓励 🌟
