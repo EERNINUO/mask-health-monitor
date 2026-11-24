@@ -133,22 +133,6 @@ cd training
 python train.py                   # 执行训练脚本
 ```
 
-## 🗺️ 路线图（未来计划）
-- 短期：完成 CH573 固件中 BLE 数据收发与应用逻辑的集成。
-- 短期：重构 Android 端 BLE 驱动，支持新版 API（欢迎 PR）。
-- 中期：将 CNN 模型转换为 TensorFlow Lite Micro，尝试在 STM32L 或 CH573 上直接推理。
-- 长期：优化传感器阵列融合算法，降低误报率；设计更紧凑的口罩集成外壳。
-
-## 🤝 如何贡献
-如果你对以下任意方向感兴趣，非常欢迎参与：
-- CH573 BLE 调试（我有硬件但缺乏协议栈经验）
-- Android BLE 驱动升级（需要熟悉 BluetoothLeScanner 新 API）
-- 模型量化与边缘部署
-
-<!-- 请先阅读 CONTRIBUTING.md， -->
-提交 PR 时请使用规范的 commit message（feat: / fix: / docs: 等）。
-`CONTRIBUTING.md` 待补充。
-
 ## 📄 许可证
 - 硬件设计文件（原理图/PCB/BOM）：CERN-OHL-S-2.0
 - 固件与 Android 代码：MIT License
