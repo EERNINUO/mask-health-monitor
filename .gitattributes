@@ -1,0 +1,27 @@
+# ============================================================
+# GitHub Linguist：语言统计规则
+# 目的：把厂商库与生成物排除出语言统计，只保留自有 C / Verilog / Python。
+# 注意：GitHub 按默认分支计算，合并进 develop 后才会反映在仓库页面。
+# ============================================================
+
+# ---- ST 厂商代码（CubeMX 生成）----
+**/Drivers/**                         linguist-vendored
+
+# ---- CubeMX 生成文件 ----
+**/Core/**                            linguist-generated
+**/Core/*/IIC.c**                    -linguist-generated
+**/Core/*/IIC.h**                    -linguist-generated
+**/Core/*/Key.c**                    -linguist-generated
+**/Core/*/Key.h**                    -linguist-generated
+**/Core/*/lps22hb.c**                -linguist-generated
+**/Core/*/lps22hb.h**                -linguist-generated
+**/Core/*/main.c**                   -linguist-generated
+**/Core/*/Power_Ctrl.c**             -linguist-generated
+**/Core/*/Power_Ctrl.h**             -linguist-generated
+**/Core/*/sensors.c**                -linguist-generated
+**/Core/*/sensors.h**                -linguist-generated
+**/Core/*/stm32l0xx_it.c**           -linguist-generated
+
+# ---- Android Studio 生成 ----
+**/app/**                             linguist-generated
+**/ble_com/**                        -linguist-generated
